@@ -24,16 +24,17 @@
                     </div>
                 </div>
             </div>
-        </div>
             {% endfor %}
-            {% else %}
-    </div>
-    <div class="col-12 text-center">
-        <h1 class="text-danger display-1 mb-5">NÃO HÁ LIVROS AQUI!</h1>
-        <h2 class="text-success display-2 mb-5">Você pode adicioná-los!</h2>
-        <a href="{% url 'adicionar' %}" class="btn btn-success btn-lg w-75 mb-5" role="button">Adicionar Livros</a>
-    </div>
             {% endif %}
-</div>
+        </div>
+        {% if not livros %}
+        <div class="col-12 text-center">
+            <h1 class="text-danger display-1 mb-5">NÃO HÁ LIVROS AQUI!</h1>
+            <h2 class="text-success display-2 mb-5">Você pode adicioná-los!</h2>
+            <a href="{% url 'adicionar' %}" class="btn btn-success btn-lg w-75 mb-5" role="button">Adicionar
+                Livros</a>
+        </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock conteudo %}
