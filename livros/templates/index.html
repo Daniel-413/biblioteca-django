@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Biblioteca - Página Inicial{% endblock titulo %}
+
+{% block conteudo %}
+<div class="container">
+    <div class="row justify-content-center align-items-center g-2">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            {% if livros %}
+            {% for livro in livros %}
+            <div class="col">
+                <div class="card">
+                    <img src="{{ livro.imagem }}" class="card-img-top" alt="Capa do livro {{ livro.titulo }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ livro.titulo }}</h5>
+                        <p class="card-text">Autoria: {{ livro.autor }}</p>
+                        <p class="card-text">Editora: {{ livro.editora }}</p>
+                        <p class="card-text">Páginas: {{ livro.paginas }}</p>
+                        <p class="card-text">Lançamento: {{ livro.ano_lancamento }}</p>
+                        <a href="{% url 'editar' livro.id_livro %}" class="btn btn-primary" role="button">Editar</a>
+                        <a href="{% url 'excluir' livro.id_livro %}" class="btn btn-danger" role="button">Excluir</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">{{ livro.dt_criacao }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+            {% else %}
+    </div>
+    <div class="col-12 text-center">
+        <h1 class="text-danger display-1 mb-5">NÃO HÁ LIVROS AQUI!</h1>
+        <h2 class="text-success display-2 mb-5">Você pode adicioná-los!</h2>
+        <a href="{% url 'adicionar' %}" class="btn btn-success btn-lg w-75 mb-5" role="button">Adicionar Livros</a>
+    </div>
+            {% endif %}
+</div>
+</div>
+{% endblock conteudo %}

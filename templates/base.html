@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}{% endblock titulo %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/201/201571.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Jordanugo &#x1F4D6</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'index' %}active{% endif %}"
+                                aria-current="page" href="{% url 'index' %}">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'adicionar' %}active{% endif %}"
+                                href="{% url 'adicionar' %}">Adicionar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://daniel51108.pythonanywhere.com/" target="_blank">API</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/Daniel-413/biblioteca-django"
+                                target="_blank">Repositório</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block conteudo %}{% endblock conteudo %}
+    </main>
+    <footer class="bg-secondary">
+        <div class="container-fluid mt-5 px-1 py-5 py-md-5">
+            <div class="row d-flex justify-content-between align-items-center g-2">
+                <div class="col-7 col-md-8 col-lg-10 text-white">
+                    <small>Feito com Django Rest Framework</small>
+                </div>
+                <div class="col-4 col-md-4 col-lg-2 d-flex justify-content-end align-items-center">
+                    <img class="img-fluid" src="https://www.django-rest-framework.org/img/logo.png" alt="Logo do Django Rest Framework">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
